@@ -1,0 +1,28 @@
+
+library(caTools)
+
+data <- data.frame(
+  Hours = c(2.5, 5.1, 3.2, 8.5, 3.5, 1.5, 9.2, 5.5, 8.3, 2.7, 7.7, 5.9),
+  Scores = c(21, 47, 27, 75, 30, 20, 88, 60, 81, 25, 85, 62)
+)
+set.seed(123) 
+split <- sample.split(data$Scores, SplitRatio = 0.8)
+train <- subset(data, split == TRUE)
+test <- subset(data, split == FALSE)
+model <- lm(Scores ~ Hours, data = train)
+summary(model)a
+predictions <- predict(model, newdata = test)
+results <- data.frame(
+  Actual = test$Scores,
+  Predicted = round(predictions, 2)
+)
+print(results)
+plot(train$Hours, train$Scores,
+     main="Linear Regression: Hours vs Scores",
+     xlab="Hours Studied",
+     ylab="Scores",
+     col="blue", pch=19)
+abline(model, col="red", lwd=2)t
+points(test$Hours, test$Scores, col="green", pch=17)
+legend("topleft", legend=c("Training Data", "Test Data", "Regression Line"),
+       col=c("blue", "green", "red"), pch=c(19,17,NA), lty=c(NA,NA,1), lwd=c(NA,NA,2))
