@@ -1,0 +1,34 @@
+
+x <- c(1,2,3,4,5)
+y <- c(2,4,6,8,10)
+plot(x, y, type="l", col="blue",
+     main="Simple Line Graph",
+     xlab="X Values",
+     ylab="Y Values")
+
+x <- c(1,2,3,4,5)
+y <- c(5,7,9,11,13)
+
+plot(x, y,
+     main="Scatter Plot",
+     xlab="X Values",
+     ylab="Y Values",
+     col="red",
+     pch=19)
+
+values <- c(10, 20, 15, 25)
+names <- c("A", "B", "C", "D")
+
+barplot(values,
+        names.arg = names,
+        col = "green",
+        main = "Bar Graph",
+        xlab = "Categories",
+        ylab = "Values")
+
+data <- c(5,7,8,9,10,10,12,13,15,18)
+
+hist(data,
+     col="orange",
+     main="Histogram",
+     xlab="Data Values")
